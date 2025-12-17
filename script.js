@@ -10,18 +10,21 @@ const btn = document.querySelector('.btn.check');
 
 const message = document.querySelector('.message');
 
-
 btn.addEventListener('click', function () {
   const inputField = document.querySelector('.guess');
   const inputFieldValue = Number(inputField.value);
 
   if (!inputField.value) {
     message.textContent = 'set the number';
-  } else if (isNaN(inputFieldValue) || inputFieldValue < 1 || inputFieldValue > 20) {
+  } else if (
+    isNaN(inputFieldValue) ||
+    inputFieldValue < 1 ||
+    inputFieldValue > 20
+  ) {
     message.textContent = '⛔ Number must be between 1 and 20!';
   } else if (inputFieldValue > guessedNumberValue) {
     if (score > 1) {
-    message.textContent = '📈 the current number is greater than guessed';
+      message.textContent = '📈 the current number is greater than guessed';
       score--;
       scoreElement.textContent = score;
     } else {
@@ -40,5 +43,7 @@ btn.addEventListener('click', function () {
   } else if (inputFieldValue === guessedNumberValue) {
     message.textContent = '🎉you win';
     guessedNumber.textContent = guessedNumberValue;
+    document.body.style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
   }
 });
